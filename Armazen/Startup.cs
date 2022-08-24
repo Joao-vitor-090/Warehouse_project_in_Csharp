@@ -28,7 +28,7 @@ namespace Armazen
             services.AddControllersWithViews();
 
             services.AddDbContext<ArmazenContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("ArmazenContext")));
+                    options.UseMySql(Configuration.GetConnectionString("ArmazenContext"), builder => builder.MigrationsAssembly("Armazen")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
