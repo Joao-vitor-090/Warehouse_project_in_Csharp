@@ -12,7 +12,21 @@ namespace Armazen.Models
         public string Email { get; set; }
         public DateTime Aniversario { get; set; }
         public double SalarioBase { get; set; }
+        public ICollection<RegistroDeVenda>Registros{get;set;} = new List<RegistroDeVenda>();
 
+        public Vendedor()
+        {
+            
+        }
+        public Vendedor(int id, string name, string email, DateTime aniversario, double salariobase)
+        {
+            
+            Id = id;
+            Name = name;
+            Email = email;
+            Aniversario = aniversario;
+            SalarioBase = salariobase;
 
+        }
     }
 }
