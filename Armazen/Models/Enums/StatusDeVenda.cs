@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace Armazen.Models.Enums
 {
-    public class StatusDeVenda
+    public enum StatusDeVenda:int
     {
+        Pendente = 0,
+        Faturado = 1,
+        Cancelado = 2
     }
 }

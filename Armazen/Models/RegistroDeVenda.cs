@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Armazen.Models.Enums;
 
 namespace Armazen.Models
 {
@@ -10,6 +11,6 @@ namespace Armazen.Models
         public int Id { get; set; }
         public DateTime Data { get; set; }
         public double Quantia { get; set; }
-        public EstadoDeVenda Status { get;set }
+        public StatusDeVenda Status { get; set; }
     }
 }
