@@ -3,14 +3,16 @@ using System;
 using Armazen.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Armazen.Migrations
 {
     [DbContext(typeof(ArmazenContext))]
-    partial class ArmazenContextModelSnapshot : ModelSnapshot
+    [Migration("20220829210215_outrasEntidades")]
+    partial class outrasEntidades
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

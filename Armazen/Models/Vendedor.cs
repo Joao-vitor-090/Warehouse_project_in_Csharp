@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Armazen.Models
 {
@@ -12,7 +11,7 @@ namespace Armazen.Models
         public string Email { get; set; }
         public DateTime Aniversario { get; set; }
         public double SalarioBase { get; set; }
-        public ICollection<RegistroDeVenda>Registros{get;set;} = new List<RegistroDeVenda>();
+        public ICollection<RegistroDeVenda> Registros { get; set; } = new List<RegistroDeVenda>();
 
         public Vendedor()
         {
@@ -28,5 +27,20 @@ namespace Armazen.Models
             SalarioBase = salariobase;
 
         }
+        public void AddVenda(RegistroDeVenda Rs) // Adicionar Venda
+        {
+            Registros.Add(Rs);
+
+        }
+        public void RemoveVenda(RegistroDeVenda Rs) //Remover venda
+        {
+            Registros.Remove(Rs);
+        }
+        public void TotalVenda(DateTime Inicio, DateTime Final)
+        
+        { //Expressão lambda
+            Registros.Where(Rv => Rv.Data >= Inicio && Rv.Data <= Final).Sum(Rv => Rv.Quantia);
+        }//Rv parametro dentro de Registro de vendas
+
     }
 }

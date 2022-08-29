@@ -6,6 +6,7 @@ using Armazen.Models.Enums;
 
 namespace Armazen.Models
 {
+    //Propriedades
     public class RegistroDeVenda
     {
         public int Id { get; set; }
@@ -14,6 +15,7 @@ namespace Armazen.Models
         public StatusDeVenda Status { get; set; }
         public Vendedor Vendedor { get; set; }
         
+        //construtores
         public RegistroDeVenda()
         {
 
@@ -27,5 +29,6 @@ namespace Armazen.Models
             Vendedor = vendedor;
 
         }
+       
     }
 }

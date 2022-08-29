@@ -14,6 +14,9 @@ namespace Armazen.Data
         {
         }
 
-        public DbSet<Armazen.Models.Deposito> Deposito { get; set; }
+        public DbSet<Deposito> Deposito { get; set; }
+        public DbSet<Vendedor> Vendedor { get; set; }
+        public DbSet<RegistroDeVenda> RegistroDeVendas { get; set; }
+        
     }
 }
