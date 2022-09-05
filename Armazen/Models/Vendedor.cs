@@ -36,10 +36,10 @@ namespace Armazen.Models
         {
             Registros.Remove(Rs);
         }
-        public void TotalVenda(DateTime Inicio, DateTime Final)
+        public double TotalVenda(DateTime Inicio, DateTime Final)
         
         { //Expressão lambda
-            Registros.Where(Rv => Rv.Data >= Inicio && Rv.Data <= Final).Sum(Rv => Rv.Quantia);
+            return Registros.Where(Rv => Rv.Data >= Inicio && Rv.Data <= Final).Sum(Rv => Rv.Quantia);
         }//Rv parametro dentro de Registro de vendas
 
     }

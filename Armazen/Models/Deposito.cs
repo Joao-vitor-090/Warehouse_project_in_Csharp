@@ -27,6 +27,10 @@ namespace Armazen.Models
             Vendedores.Add(seller);//Seller = vendedor;
         }
 
+        public double TotalVendas(DateTime inicio,DateTime final)
+        {
+            return Vendedores.Sum(Vendedor => Vendedor.TotalVenda(inicio, final));
+        }
      
 
     }
