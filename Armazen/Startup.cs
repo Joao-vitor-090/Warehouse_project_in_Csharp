@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Armazen.Data;
 
+
 namespace Armazen
 {
     public class Startup
@@ -28,15 +29,20 @@ namespace Armazen
             services.AddControllersWithViews();
 
             services.AddDbContext<ArmazenContext>(options =>
-                    options.UseMySql(Configuration.GetConnectionString("ArmazenContext"), builder => builder.MigrationsAssembly("Armazen")));
+                    options.UseMySql(Configuration.GetConnectionString("ArmazenContext"), builder 
+                                                             => builder.MigrationsAssembly("Armazen")));
+            services.AddScoped<SeedingService>(); //adição de serviço próprio na aplicação.
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedingService seedingService)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment()) //VERIFICAÇÃO PARA VER SE ESTA NO PERGIL DE DESENVOLVEDOR
             {
                 app.UseDeveloperExceptionPage();
+                
+                seedingService.Seed();
+
             }
             else
             {

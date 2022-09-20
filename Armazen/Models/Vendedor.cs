@@ -12,12 +12,13 @@ namespace Armazen.Models
         public DateTime Aniversario { get; set; }
         public double SalarioBase { get; set; }
         public ICollection<RegistroDeVenda> Registros { get; set; } = new List<RegistroDeVenda>();
+        public Deposito Deposito { get; set; }
 
         public Vendedor()
         {
             
         }
-        public Vendedor(int id, string name, string email, DateTime aniversario, double salariobase)
+        public Vendedor(int id, string name, string email, DateTime aniversario, double salariobase, Deposito deposito)
         {
             
             Id = id;
@@ -25,6 +26,7 @@ namespace Armazen.Models
             Email = email;
             Aniversario = aniversario;
             SalarioBase = salariobase;
+            Deposito = deposito;
 
         }
         public void AddVenda(RegistroDeVenda Rs) // Adicionar Venda
