@@ -19,5 +19,10 @@ namespace Armazen.Servicos
         { //chamar todos
             return _Context.Vendedor.ToList();// 
         }
+        public void Enviar(Vendedor obj) //adicionar um novo vendedor ao banco de dados
+        {
+            _Context.Add(obj);
+            _Context.SaveChanges();
+        }
     }
 }

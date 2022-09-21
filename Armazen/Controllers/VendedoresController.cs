@@ -1,5 +1,6 @@
 ﻿using Armazen.Servicos;
 using Microsoft.AspNetCore.Mvc;
+using  Armazen.Models;
 
 namespace Armazen.Controllers
 {
@@ -16,5 +17,20 @@ namespace Armazen.Controllers
             var list = _vendeddorServicos.ReqTodos();
             return View(list);
         }
+
+      public IActionResult Criar()//tipo de retorno de todas as ações
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken] //Para evitar que a aplicação sofra ataques csrf
+        public IActionResult Criar(Models.Vendedor vendedor)
+        {
+            _vendeddorServicos.Enviar(vendedor);
+            return RedirectToAction(nameof(Index));
+
+        }
+            
     }
 }
