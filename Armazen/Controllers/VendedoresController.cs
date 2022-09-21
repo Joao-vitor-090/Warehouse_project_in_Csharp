@@ -1,16 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Armazen.Servicos;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Armazen.Controllers
 {
     public class VendedoresController : Controller
     {
+        private readonly VendeddorServicos _vendeddorServicos;
+
+        public VendedoresController(VendeddorServicos vendeddorServico)
+        {
+            _vendeddorServicos = vendeddorServico; //injeção de dependência 
+        }
         public IActionResult Index()
         {
-            return View();
+            var list = _vendeddorServicos.ReqTodos();
+            return View(list);
         }
     }
 }

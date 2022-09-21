@@ -10,7 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Armazen.Data;
-
+using Armazen.Servicos;
 
 namespace Armazen
 {
@@ -32,6 +32,7 @@ namespace Armazen
                     options.UseMySql(Configuration.GetConnectionString("ArmazenContext"), builder 
                                                              => builder.MigrationsAssembly("Armazen")));
             services.AddScoped<SeedingService>(); //adição de serviço próprio na aplicação.
+            services.AddScoped<Servicos.VendeddorServicos>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
