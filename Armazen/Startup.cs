@@ -33,6 +33,8 @@ namespace Armazen
                                                              => builder.MigrationsAssembly("Armazen")));
             services.AddScoped<SeedingService>(); //adição de serviço próprio na aplicação.
             services.AddScoped<Servicos.VendeddorServicos>();
+            services.AddScoped<DepositoServicos>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

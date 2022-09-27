@@ -1,4 +1,4 @@
-﻿@model Armazen.Models.Vendedor
+﻿@model Armazen.Models.VendedorFormViewModel;
 
 @{
     ViewData["Title"] = "Criar";
@@ -10,23 +10,28 @@
     <div class="col-md-4">
         <form asp-action="Criar">
             <div class="form-group">
-                <label asp-for="Name" class="custom-control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <label asp-for="Vendedor.Name" class="custom-control-label"></label>
+                <input asp-for="Vendedor.Name" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="custom-control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <label asp-for="Vendedor.Email" class="custom-control-label"></label>
+                <input asp-for="Vendedor.Email" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="Aniversario" class="custom-control-label"></label>
-                <input asp-for="Aniversario" class="form-control" />
+                <label asp-for="Vendedor.Aniversario" class="custom-control-label"></label>
+                <input asp-for="Vendedor.Aniversario" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="SalarioBase" class="custom-control-label"></label>
-                <input asp-for="SalarioBase" class="form-control" />
+                <label asp-for="Vendedor.SalarioBase" class="custom-control-label"></label>
+                <input asp-for="Vendedor.SalarioBase" class="form-control" />
             </div>
             <div class="form-group">
-                <input type ="submit" value="Criar" class="btn btn-danger"
+                <label asp-for="Vendedor.DepositoId" class="custom-control-label"></label>
+                <select asp-for="Vendedor.DepositoId" asp-items="@(new SelectList(Model.Depositos,"Id","Name"))" class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+                <input type ="submit" value="Criar" class="btn btn-danger" />
             </div>
         </form>
     </div>
