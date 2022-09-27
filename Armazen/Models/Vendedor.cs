@@ -13,6 +13,7 @@ namespace Armazen.Models
         public double SalarioBase { get; set; }
         public ICollection<RegistroDeVenda> Registros { get; set; } = new List<RegistroDeVenda>();
         public Deposito Deposito { get; set; }
+        public int DepositoId { get; set; }
 
         public Vendedor()
         {

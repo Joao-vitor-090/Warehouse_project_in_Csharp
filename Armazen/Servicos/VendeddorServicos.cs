@@ -21,6 +21,7 @@ namespace Armazen.Servicos
         }
         public void Enviar(Vendedor obj) //adicionar um novo vendedor ao banco de dados
         {
+            obj.Deposito = _Context.Deposito.First();
             _Context.Add(obj);
             _Context.SaveChanges();
         }
