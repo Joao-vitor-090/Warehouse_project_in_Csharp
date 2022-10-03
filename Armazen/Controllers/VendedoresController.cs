@@ -36,6 +36,28 @@ namespace Armazen.Controllers
             return RedirectToAction(nameof(Index));
 
         }
-            
+        public IActionResult Deletar(int? id) //int opcional
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var obj = _vendeddorServicos.ReqParaId(id.Value);
+            if (obj == null)
+            {
+
+                return NotFound();
+            }
+            return View(obj);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken] 
+        public IActionResult Deletar(int id)
+        {
+            _vendeddorServicos.Remove(id);
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 }

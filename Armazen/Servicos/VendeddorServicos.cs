@@ -25,5 +25,15 @@ namespace Armazen.Servicos
             _Context.Add(obj);
             _Context.SaveChanges();
         }
+        public Vendedor ReqParaId(int id)
+        {
+            return _Context.Vendedor.FirstOrDefault(obj => obj.Id == id);
+        }
+        public void Remove(int id)
+        {
+            var obj = _Context.Vendedor.Find(id);
+            _Context.Vendedor.Remove(obj);
+            _Context.SaveChanges();
+        }
     }
 }
