@@ -1,0 +1,49 @@
+﻿@model Armazen.Models.Vendedor;
+@{
+    ViewData["Title"] = "Detalhes";
+
+    var Departamento = "Departamento";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Vendedor</h4>
+    <br />
+    <dl class="dl-horizontal">
+        <dt class="Vendedor-Detalhes">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="Vendedor-Detalhes">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="Vendedor-Detalhes">
+            @Html.DisplayNameFor(model => model.Aniversario)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aniversario)
+        </dd>
+        <dt class="Vendedor-Detalhes">
+            @Html.DisplayNameFor(model => model.SalarioBase)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SalarioBase)
+        </dd>
+        <dt class="Vendedor-Detalhes">
+            @Html.DisplayNameFor(model => Departamento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Deposito.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-defaut">Editar</a>
+    <a asp-action="Index" class="btn btn-defaut">Voltar a Lista</a>
+</div>

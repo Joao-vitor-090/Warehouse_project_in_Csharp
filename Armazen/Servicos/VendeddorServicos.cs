@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Armazen.Servicos
 {
@@ -27,7 +29,8 @@ namespace Armazen.Servicos
         }
         public Vendedor ReqParaId(int id)
         {
-            return _Context.Vendedor.FirstOrDefault(obj => obj.Id == id);
+            return _Context.Vendedor.Include(obj => obj.Deposito).FirstOrDefault(obj => obj.Id == id); //carregar outros objetos relacionados ao objeto principal
+
         }
         public void Remove(int id)
         {
