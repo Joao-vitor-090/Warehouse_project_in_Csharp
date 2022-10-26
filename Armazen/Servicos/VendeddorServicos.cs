@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-
+using Armazen.Servicos.excecoes;
 
 namespace Armazen.Servicos
 {
@@ -37,6 +37,24 @@ namespace Armazen.Servicos
             var obj = _Context.Vendedor.Find(id);
             _Context.Vendedor.Remove(obj);
             _Context.SaveChanges();
+        }
+
+        public void Update(Vendedor obj)
+        {
+
+            if (_Context.Vendedor.Any(x => x.Id == obj.Id))//any() verifica se há algum item como esse existente no banco de dados
+            { //irá verificar a existencia de um item pelo id do mesmo
+                throw new NotFoundException("Id não existe");
+            }
+            try
+            {
+            _Context.Update(obj);
+            _Context.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException e )
+            {
+                throw new DbUpdateConcurrencyException(e.Message);
+            }
         }
     }
 }

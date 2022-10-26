@@ -1,0 +1,27 @@
+﻿.Vendedor-Detalhes {
+background-color:transparent;
+color: black;
+font-family:'Times New Roman', Times, serif;
+font-style:oblique;
+font-size:1.5em;
+margin-bottom: 5px;
+}
+
+.botao-detalhes {
+border: 1px solid black;
+padding: 1em;
+background-color: lightskyblue;
+color: white;
+}
+.botao-detalhes:hover {
+border: 1px solid blue;
+background-color: white;
+color: black;
+transition: 2s;
+text-decoration:none;
+font-style:normal;
+
+}
+dd{
+    margin:0em 0em 1em 1.7em;
+}

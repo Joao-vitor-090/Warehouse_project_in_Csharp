@@ -1,6 +1,8 @@
 ﻿using Armazen.Servicos;
 using Microsoft.AspNetCore.Mvc;
 using  Armazen.Models;
+using System.Collections.Generic;
+using Armazen.Servicos.excecoes;
 
 namespace Armazen.Controllers
 {
@@ -50,6 +52,7 @@ namespace Armazen.Controllers
             }
             return View(obj);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken] 
         public IActionResult Deletar(int id)
@@ -71,6 +74,51 @@ namespace Armazen.Controllers
                 return NotFound();
             }
             return View(obj);
+        }
+
+
+        public IActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _vendeddorServicos.ReqParaId(id.Value);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            List<Deposito> departments = _depositoServicos.FindAll();
+
+            VendedorFormViewModel viewModel = new VendedorFormViewModel { Vendedor = obj, Depositos = departments };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Vendedor vendedor)
+        {
+            if (id != vendedor.Id)
+            {
+                return BadRequest();
+            }
+            try
+            {
+                _vendeddorServicos.Update(vendedor);
+
+                return RedirectToAction(nameof(Index)); //redireciona para página descrita
+            }
+            catch(NotFoundException)
+            {
+                return NotFound();
+            }
+            catch (DbConcurrencyException)
+            {
+                return BadRequest();
+            }
         }
     }
 }

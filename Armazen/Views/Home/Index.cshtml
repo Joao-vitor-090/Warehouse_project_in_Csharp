@@ -2,7 +2,24 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<html lang="pt-br">
+<head>
+    <link href="~/css/Pagina-home.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>@ViewData["Title"]</h1>
+    <main class="principal">
+    <article>
+        <p>
+            <span class="subtitulo">Bem vindos ao meu mais novo projeto</span>
+            Ele foi um grande desafio para mim, nele podemos ver CRUD, usuabilidade de estruturas lambdas,Entity Framework,integração com o banco de dados, validações e muito mais.
+        </p>
+    </article>
+    <section>
+        <span class="subtitulo">Meu nome é João Vitor</span>
+        Você pode ver outros projetos meus tanto em C# quanto em outras tecnologias pelo meu <a href="https://github.com/Joao-vitor-090"> GitHub</a>
+    </section>
+</main>
+</body>
+
+</html>
