@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace Armazen.Models
@@ -8,11 +9,23 @@ namespace Armazen.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        [Display(Name = "Aniversário do Funcionário")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime Aniversario { get; set; }
+
+        [Display(Name = "Salário Base")]
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         public double SalarioBase { get; set; }
+
         public ICollection<RegistroDeVenda> Registros { get; set; } = new List<RegistroDeVenda>();
         public Deposito Deposito { get; set; }
+
+        [Display(Name = "Setor")]
         public int DepositoId { get; set; }
 
         public Vendedor()

@@ -12,6 +12,7 @@ namespace Armazen.Controllers
 {
     public class DepositoesController : Controller
     {
+
         private readonly ArmazenContext _context;
 
         public DepositoesController(ArmazenContext context)
@@ -148,6 +149,18 @@ namespace Armazen.Controllers
         private bool DepositoExists(int id)
         {
             return _context.Deposito.Any(e => e.Id == id);
+        }
+
+        public class DepartmentsController : Controller
+        {
+            public IActionResult Index()
+            {
+                List<Deposito> list = new List<Deposito>();
+                list.Add(new Deposito { Id = 7, Name = "Eletronics" });
+                list.Add(new Deposito { Id = 8, Name = "Fashion" });
+
+                return View(list);
+            }
         }
     }
 }

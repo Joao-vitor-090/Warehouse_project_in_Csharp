@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using  Armazen.Models;
 using System.Collections.Generic;
 using Armazen.Servicos.excecoes;
+using System.Threading.Tasks;
 
 namespace Armazen.Controllers
 {
@@ -77,7 +78,7 @@ namespace Armazen.Controllers
         }
 
 
-        public IActionResult Edit(int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -99,26 +100,31 @@ namespace Armazen.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Vendedor vendedor)
+        public async Task<IActionResult> Edit(int id, Vendedor vendedor)
         {
-            if (id != vendedor.Id)
+           if (id != vendedor.Id)
+             {
+                 return BadRequest();
+             }
+             try
+             {
+                 _vendeddorServicos.Update(vendedor);
+                return RedirectToAction(nameof(Index));
+    
+            }
+             catch(NotFoundException)
+             {
+                // return NotFound();
+                
+                return RedirectToAction(nameof(Index));
+            }
+           
+             catch (DbConcurrencyException)
             {
                 return BadRequest();
             }
-            try
-            {
-                _vendeddorServicos.Update(vendedor);
-
-                return RedirectToAction(nameof(Index)); //redireciona para página descrita
-            }
-            catch(NotFoundException)
-            {
-                return NotFound();
-            }
-            catch (DbConcurrencyException)
-            {
-                return BadRequest();
-            }
+             
+            
         }
     }
 }
